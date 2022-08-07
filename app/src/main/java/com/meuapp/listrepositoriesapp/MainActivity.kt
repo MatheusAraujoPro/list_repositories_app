@@ -23,16 +23,16 @@ class MainActivity : ComponentActivity() {
         //Executar alguma lógica
         val vm = RepoListViewModel(
             getRepoUseCase = GetRepos(
-              repository = RepoRepositoryImpl(
-                  dataSource = RepoApiImpl()
-              )
+                repository = RepoRepositoryImpl(
+                    dataSource = RepoApiImpl()
+                )
             )
         )
 
         setContent {
             ListRepositoriesAppTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
+                Surface() {
                     RepoListView(vm)
                 }
             }
@@ -40,15 +40,22 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
+@Preview(
+    name = "Light theme",
+    showBackground = true
+)
 @Composable
 fun DefaultPreview() {
+    val vm = RepoListViewModel(
+        getRepoUseCase = GetRepos(
+            repository = RepoRepositoryImpl(
+                dataSource = RepoApiImpl()
+            )
+        )
+    )
     ListRepositoriesAppTheme {
-        Greeting("Android")
+        Surface() {
+            RepoListView(vm)
+        }
     }
 }
