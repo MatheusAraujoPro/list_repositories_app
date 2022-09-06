@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.meuapp.listrepositoriesapp.data.repository.RepoApiImpl
 import com.meuapp.listrepositoriesapp.data.repository.RepoRepositoryImpl
+import com.meuapp.listrepositoriesapp.domain.usecase.GetFilteredRepos
 import com.meuapp.listrepositoriesapp.domain.usecase.GetRepos
 import com.meuapp.listrepositoriesapp.presentation.repolist.RepoListView
 import com.meuapp.listrepositoriesapp.presentation.repolist.RepoListViewModel
@@ -22,11 +23,13 @@ class MainActivity : ComponentActivity() {
 
         //Executar alguma lógica
         val vm = RepoListViewModel(
+
             getRepoUseCase = GetRepos(
                 repository = RepoRepositoryImpl(
                     dataSource = RepoApiImpl()
                 )
-            )
+            ),
+            getFilteredReposUseCase = GetFilteredRepos()
         )
 
         setContent {
@@ -51,7 +54,8 @@ fun DefaultPreview() {
             repository = RepoRepositoryImpl(
                 dataSource = RepoApiImpl()
             )
-        )
+        ),
+        getFilteredReposUseCase = GetFilteredRepos()
     )
     ListRepositoriesAppTheme {
         Surface() {

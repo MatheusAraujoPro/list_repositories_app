@@ -6,32 +6,45 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
-import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import kotlin.coroutines.coroutineContext
+import com.meuapp.listrepositoriesapp.domain.model.Repo
+
 
 @Composable
 fun RepoListView(vm: RepoListViewModel) {
+    var isAppBarSearchVisibility by remember { mutableStateOf(false) }
+    var text by remember { mutableStateOf("") }
+    var listReposOnScrean by remember { mutableStateOf(listOf<Repo>()) }
+
+    fun handleBarVisibility(): Unit {
+        isAppBarSearchVisibility = !isAppBarSearchVisibility
+    }
+
     /***
      * Assim que a tela carrega, ele chama o
      * método getRepos da ViewModel
      */
+
     LaunchedEffect(Unit, block = {
         vm.getRepos()
     })
 
     Scaffold(
         topBar = {
-            TopAppBar(
-                modifier = Modifier.height(68.dp),
-                backgroundColor = MaterialTheme.colors.primary,
-                title = {
-                    Text(text = "My Repositories")
-                })
-
+            if (isAppBarSearchVisibility) {
+                TopAppBarSearch(
+                    text,
+                    handleBarVisibility = { handleBarVisibility() },
+                    handleSearchRepo = { repoName ->
+                        text = repoName
+                        listReposOnScrean = vm.getFilteredRepos(repoName)
+                    }
+                )
+            } else {
+                TopAppBarDefault { handleBarVisibility() }
+            }
         },
         content = {
             Column(
@@ -48,10 +61,10 @@ fun RepoListView(vm: RepoListViewModel) {
                     CircularProgressIndicator()
 
                 } else {
-                    // loadedList = vm.repos.size
+                    listReposOnScrean = vm.repos
                     LazyColumn() {
                         //Pegando o item da Iteração
-                        items(vm.repos) { repo ->
+                        items(listReposOnScrean) { repo ->
                             RepoItem(repo = repo)
                         }
                     }
@@ -61,3 +74,4 @@ fun RepoListView(vm: RepoListViewModel) {
         }
     )
 }
+
