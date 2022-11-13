@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">listRepositoriesApp</string>
+    <string name="repo_name">Nome</string>
+    <!-- REPO'S TEXT    -->
+    <string name="repo_description">Descrição</string>
+    <string name="repo_language">Linguagem</string>
+    <string name="repo_no_language">Sem Linguagem</string>
+    <string name="repo_no_description">Sem descrição</string>
+
+    <!-- TOP APP BAR SEARCH'S TEXT    -->
+    <string name="button_go_back_text">Go back</string>
+    <string name="text_find_placeholder">Pesquisar...</string>
 </resources>

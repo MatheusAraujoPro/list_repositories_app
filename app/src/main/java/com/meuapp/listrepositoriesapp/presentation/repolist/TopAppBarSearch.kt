@@ -12,7 +12,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.meuapp.listrepositoriesapp.R
 
 @Composable
 fun TopAppBarSearch(
@@ -29,7 +31,7 @@ fun TopAppBarSearch(
         ) {
         Icon(
             imageVector = Icons.Default.ArrowBack,
-            contentDescription = "Go back",
+            contentDescription = stringResource(R.string.button_go_back_text),
             modifier = Modifier.clickable {
                 handleBarVisibility()
             },
@@ -42,7 +44,7 @@ fun TopAppBarSearch(
                 fraction = 0.955f
             ),
             placeholder = {
-                Text(text = "Pesquisar...")
+                Text(text = stringResource(R.string.text_find_placeholder))
             },
             onValueChange = { value ->
                 handleSearchRepo(value)
