@@ -28,15 +28,9 @@ fun RepoListView(vm: RepoListViewModel) {
     var text by remember { mutableStateOf("") }
     var listReposOnScrean by remember { mutableStateOf(listOf<Repo>()) }
 
-
-    fun handleBarVisibility(): Unit {
+    fun handleBarVisibility() {
         isAppBarSearchVisibility = !isAppBarSearchVisibility
     }
-
-    /***
-     * Assim que a tela carrega, ele chama o
-     * método getRepos da ViewModel
-     */
 
     LaunchedEffect(Unit, block = {
         vm.getRepos()
@@ -46,7 +40,7 @@ fun RepoListView(vm: RepoListViewModel) {
         topBar = {
             if (isAppBarSearchVisibility) {
                 TopAppBarSearch(
-                    text,
+                    text = text,
                     handleBarVisibility = { handleBarVisibility() },
                     handleSearchRepo = { repoName ->
                         text = repoName
@@ -64,22 +58,16 @@ fun RepoListView(vm: RepoListViewModel) {
                     .fillMaxSize(),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = CenterHorizontally
-
-
             ) {
-                // Trabalhando com listas
                 if (vm.repos.isEmpty()) {
                     CircularProgressIndicator()
-
                 } else {
                     listReposOnScrean = vm.repos
-                    LazyColumn() {
-                        //Pegando o item da Iteração
+                    LazyColumn {
                         items(listReposOnScrean) { repo ->
                             RepoItem(repo = repo)
                         }
                     }
-
                 }
             }
         }
