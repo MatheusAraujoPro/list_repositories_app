@@ -19,11 +19,12 @@ import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.meuapp.listrepositoriesapp.domain.model.Repo
+import org.koin.androidx.compose.getViewModel
 
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun RepoListView(vm: RepoListViewModel) {
+fun RepoListView(vm: RepoListViewModel = getViewModel()) {
     var isAppBarSearchVisibility by remember { mutableStateOf(false) }
     var text by remember { mutableStateOf("") }
     var listReposOnScrean by remember { mutableStateOf(listOf<Repo>()) }
