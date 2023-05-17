@@ -4,12 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
-import com.meuapp.listrepositoriesapp.data.datasource.RepoDataSourceImpl
-import com.meuapp.listrepositoriesapp.data.repository.RepoRepositoryImpl
-import com.meuapp.listrepositoriesapp.domain.usecase.GetFilteredRepos
-import com.meuapp.listrepositoriesapp.domain.usecase.GetRepos
 import com.meuapp.listrepositoriesapp.presentation.repolist.RepoListView
 import com.meuapp.listrepositoriesapp.presentation.repolist.RepoListViewModel
 import com.meuapp.listrepositoriesapp.ui.theme.ListRepositoriesAppTheme
@@ -25,27 +19,6 @@ class MainActivity : ComponentActivity() {
                     RepoListView(repoListViewModel)
                 }
             }
-        }
-    }
-}
-
-@Preview(
-    name = "Light theme",
-    showBackground = true
-)
-@Composable
-fun DefaultPreview() {
-    val vm = RepoListViewModel(
-        getRepoUseCase = GetRepos(
-            repository = RepoRepositoryImpl(
-                dataSource = RepoDataSourceImpl()
-            )
-        ),
-        getFilteredReposUseCase = GetFilteredRepos()
-    )
-    ListRepositoriesAppTheme {
-        Surface {
-            RepoListView(vm)
         }
     }
 }
