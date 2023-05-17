@@ -9,4 +9,9 @@ class RepoConstants private constructor() {
         val DEFAULT = "https://www.umov.me/wp-content/uploads/2018/08/banner-topo-BLOG-1200-x-400-2.jpg"
         val HTML = "https://ayltoninacio.com.br/img/p/90w750.jpg"
     }
+
+    object WebConstants{
+        const val GITHUB_URL = "https://api.github.com/"
+        const val GITHUB_URL_USER_REPO = "users/MatheusAraujoPro/repos"
+    }
 }
