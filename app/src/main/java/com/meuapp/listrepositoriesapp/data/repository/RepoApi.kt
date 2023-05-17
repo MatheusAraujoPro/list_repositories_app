@@ -1,6 +1,5 @@
 package com.meuapp.listrepositoriesapp.data.repository
 
-import android.util.Log
 import com.meuapp.listrepositoriesapp.data.datasource.api.RepoEntity
 import com.meuapp.listrepositoriesapp.data.datasource.api.getRepo
 import com.meuapp.listrepositoriesapp.domain.model.Repo
@@ -12,7 +11,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
-import java.lang.Exception
 
 
 interface RepoApi {
@@ -36,8 +34,6 @@ interface RepoApi {
                     .client(client.build())
                     .build().create(RepoApi::class.java)
             }
-            Log.d("Esse aqui é o RepoAPI", "RepoAPi: ${repoAPi}")
-
             return repoAPi!!
         }
     }
