@@ -1,4 +1,4 @@
-package com.meuapp.listrepositoriesapp.domain.repository
+package com.meuapp.listrepositoriesapp.domain.datasource
 
 import com.meuapp.listrepositoriesapp.domain.model.Repo
 
