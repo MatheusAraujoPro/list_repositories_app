@@ -1,7 +1,7 @@
 package com.meuapp.listrepositoriesapp.data.repository
 
 import com.meuapp.listrepositoriesapp.domain.model.Repo
-import com.meuapp.listrepositoriesapp.domain.repository.RepoDataSource
+import com.meuapp.listrepositoriesapp.domain.datasource.RepoDataSource
 import com.meuapp.listrepositoriesapp.domain.repository.RepoRepository
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.runBlocking
