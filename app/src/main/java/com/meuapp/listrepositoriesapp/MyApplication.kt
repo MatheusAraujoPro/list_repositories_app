@@ -2,6 +2,7 @@ package com.meuapp.listrepositoriesapp
 
 import android.app.Application
 import com.meuapp.listrepositoriesapp.di.dataSourceModules
+import com.meuapp.listrepositoriesapp.di.networkModel
 import com.meuapp.listrepositoriesapp.di.repositoriesModules
 import com.meuapp.listrepositoriesapp.di.useCaseModules
 import com.meuapp.listrepositoriesapp.di.viewModelModules
@@ -13,9 +14,10 @@ class MyApplication : Application() {
         super.onCreate()
         startKoin {
             modules(
-                useCaseModules,
-                repositoriesModules,
+                networkModel,
                 dataSourceModules,
+                repositoriesModules,
+                useCaseModules,
                 viewModelModules
             ).androidContext(applicationContext)
         }
