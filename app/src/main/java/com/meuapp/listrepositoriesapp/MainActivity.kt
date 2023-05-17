@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.meuapp.listrepositoriesapp.data.repository.RepoApiImpl
+import com.meuapp.listrepositoriesapp.data.datasource.RepoDataSourceImpl
 import com.meuapp.listrepositoriesapp.data.repository.RepoRepositoryImpl
 import com.meuapp.listrepositoriesapp.domain.usecase.GetFilteredRepos
 import com.meuapp.listrepositoriesapp.domain.usecase.GetRepos
@@ -38,13 +38,13 @@ fun DefaultPreview() {
     val vm = RepoListViewModel(
         getRepoUseCase = GetRepos(
             repository = RepoRepositoryImpl(
-                dataSource = RepoApiImpl()
+                dataSource = RepoDataSourceImpl()
             )
         ),
         getFilteredReposUseCase = GetFilteredRepos()
     )
     ListRepositoriesAppTheme {
-        Surface() {
+        Surface {
             RepoListView(vm)
         }
     }

@@ -1,4 +1,4 @@
-package com.meuapp.listrepositoriesapp.data.datasource.api
+package com.meuapp.listrepositoriesapp.data.models
 
 import com.meuapp.listrepositoriesapp.domain.model.Repo
 
