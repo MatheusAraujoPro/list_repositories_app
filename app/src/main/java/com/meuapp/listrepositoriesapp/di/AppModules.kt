@@ -8,7 +8,7 @@ import com.meuapp.listrepositoriesapp.domain.datasource.RepoDataSource
 import com.meuapp.listrepositoriesapp.domain.repository.RepoRepository
 import com.meuapp.listrepositoriesapp.domain.usecase.GetFilteredRepos
 import com.meuapp.listrepositoriesapp.domain.usecase.GetRepos
-import com.meuapp.listrepositoriesapp.presentation.repolistscreen.RepoListViewModel
+import com.meuapp.listrepositoriesapp.presentation.repolistscreen.RepoListScreenViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -26,7 +26,7 @@ val dataSourceModules = module {
 }
 
 val viewModelModules = module {
-    viewModel { RepoListViewModel(get(), get()) }
+    viewModel { RepoListScreenViewModel(get(), get()) }
 }
 
 val networkModel = module {

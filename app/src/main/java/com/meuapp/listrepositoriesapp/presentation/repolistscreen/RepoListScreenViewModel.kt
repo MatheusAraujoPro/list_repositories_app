@@ -8,7 +8,7 @@ import com.meuapp.listrepositoriesapp.domain.usecase.GetFilteredRepos
 import com.meuapp.listrepositoriesapp.domain.usecase.GetRepos
 import kotlinx.coroutines.launch
 
-class RepoListViewModel constructor(
+class RepoListScreenViewModel constructor(
     private val getRepoUseCase: GetRepos,
     private val getFilteredReposUseCase: GetFilteredRepos
 ): ViewModel(){

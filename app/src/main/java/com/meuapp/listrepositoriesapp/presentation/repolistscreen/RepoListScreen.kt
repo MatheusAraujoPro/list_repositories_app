@@ -25,7 +25,7 @@ import org.koin.androidx.compose.getViewModel
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun RepoListView(vm: RepoListViewModel = getViewModel()) {
+fun RepoListScreen(vm: RepoListScreenViewModel = getViewModel()) {
     var isAppBarSearchVisibility by remember { mutableStateOf(false) }
     var text by remember { mutableStateOf("") }
     var listReposOnScrean by remember { mutableStateOf(listOf<Repo>()) }
