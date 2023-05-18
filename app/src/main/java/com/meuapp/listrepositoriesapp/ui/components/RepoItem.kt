@@ -1,6 +1,8 @@
 package com.meuapp.listrepositoriesapp.ui.components
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Card
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -25,20 +27,13 @@ fun RepoItem(repo: Repo) {
             .padding(10.dp)
             .fillMaxWidth()
     ) {
-        Column(modifier = Modifier.padding(14.dp)) {
-
-            ImageTec(language = if (repo.language !== null) "${repo.language}" else stringResource(R.string.repo_no_language))
-            Title(text = stringResource(R.string.repo_name), value = repo.name)
-            Spacer(modifier = Modifier.height(10.dp))
-            Title(
-                text = stringResource(R.string.repo_description),
-                value = if (repo.description !== null) "${repo.description}" else stringResource(R.string.repo_no_description)
+        Column {
+            ImageTec(
+                language = if (repo.language.isNullOrEmpty().not()) "${repo.language}" else stringResource(
+                    R.string.repo_no_language
+                )
             )
-            Title(
-                text = stringResource(R.string.repo_language),
-                value = if (repo.language !== null) "${repo.language}" else stringResource(R.string.repo_no_language)
-            )
-
+            Content(repo)
         }
     }
 }
@@ -69,44 +64,67 @@ fun ImageTec(language: String) {
 
 }
 
-
 @Composable
 fun Title(text: String, value: String) {
     Column {
         Text(
             fontWeight = FontWeight.Bold,
             fontSize = 22.sp,
-            text = "$text"
+            text = text
 
         )
         Spacer(modifier = Modifier.height(6.dp))
 
         Text(
             fontSize = 20.sp,
-            text = "$value",
+            text = value,
             fontWeight = FontWeight.Light
         )
     }
+}
+
+@Composable
+fun Content(repo: Repo) {
+    Column(modifier = Modifier.padding(14.dp)) {
+
+        Title(text = stringResource(R.string.repo_name), value = repo.name)
+        Spacer(modifier = Modifier.height(10.dp))
+        Title(
+            text = stringResource(R.string.repo_description),
+            value = if (repo.description.isNullOrEmpty().not()) "${repo.description}" else stringResource(
+                R.string.repo_no_description
+            )
+        )
+        Title(
+            text = stringResource(R.string.repo_language),
+            value = if (repo.language.isNullOrEmpty().not()) "${repo.language}" else stringResource(R.string.repo_no_language)
+        )
+
+    }
+
 }
 
 
 @Composable
 @Preview
 fun CardPreview() {
-    val repo = Repo(
-        id = 1,
-        name = "Repo Teste",
-        description = "Este é apenas um repo de teste Este é apenas um repo de teste Este é apenas um repo de teste",
-        language = "Kotlin"
-    )
-    val repo2 = Repo(id = 1, name = "Repo Teste", description = "teste", language = "Kotlin")
-    ListRepositoriesAppTheme {
-        Surface() {
-            Column() {
-                RepoItem(repo)
-                RepoItem(repo2)
-            }
+    val listOfDummyRepos = listOf(
+        Repo(
+            id = 1,
+            name = "Repo Teste",
+            description = "Este é apenas um repo de teste Este é apenas um repo de teste Este é apenas um repo de teste",
+            language = "Kotlin"
+        ),
+        Repo(id = 1, name = "Repo Teste", description = "teste", language = "Kotlin")
 
+    )
+    ListRepositoriesAppTheme {
+        Surface {
+            LazyColumn {
+                items(listOfDummyRepos) {
+                    RepoItem(repo = it)
+                }
+            }
         }
     }
 }
