@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.meuapp.listrepositoriesapp.domain.model.Repo
+import com.meuapp.listrepositoriesapp.ui.components.RepoItem
 import org.koin.androidx.compose.getViewModel
 
 
@@ -66,7 +67,7 @@ fun RepoListView(vm: RepoListViewModel = getViewModel()) {
                     listReposOnScrean = vm.repos
                     LazyColumn {
                         items(listReposOnScrean) { repo ->
-                            RepoItem(repo = repo)
+                           RepoItem(repo = repo )
                         }
                     }
                 }
