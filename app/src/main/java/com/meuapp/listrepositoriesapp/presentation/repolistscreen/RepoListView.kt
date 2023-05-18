@@ -1,4 +1,4 @@
-package com.meuapp.listrepositoriesapp.presentation.repolist
+package com.meuapp.listrepositoriesapp.presentation.repolistscreen
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement

@@ -8,7 +8,7 @@ import com.meuapp.listrepositoriesapp.domain.datasource.RepoDataSource
 import com.meuapp.listrepositoriesapp.domain.repository.RepoRepository
 import com.meuapp.listrepositoriesapp.domain.usecase.GetFilteredRepos
 import com.meuapp.listrepositoriesapp.domain.usecase.GetRepos
-import com.meuapp.listrepositoriesapp.presentation.repolist.RepoListViewModel
+import com.meuapp.listrepositoriesapp.presentation.repolistscreen.RepoListViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

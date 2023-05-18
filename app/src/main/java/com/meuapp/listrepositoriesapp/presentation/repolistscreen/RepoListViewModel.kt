@@ -1,8 +1,6 @@
-package com.meuapp.listrepositoriesapp.presentation.repolist
+package com.meuapp.listrepositoriesapp.presentation.repolistscreen
 
 import androidx.compose.runtime.mutableStateListOf
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.meuapp.listrepositoriesapp.domain.model.Repo
