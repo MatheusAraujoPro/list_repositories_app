@@ -1,4 +1,4 @@
-package com.meuapp.listrepositoriesapp.presentation.repolistscreen
+package com.meuapp.listrepositoriesapp.ui.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
@@ -46,7 +46,7 @@ fun RepoItem(repo: Repo) {
 @Composable
 fun ImageTec(language: String) {
 
-    var imgLanguage: String = ""
+    var imgLanguage = ""
 
 
     when (language) {
