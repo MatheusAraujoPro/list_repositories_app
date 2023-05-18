@@ -1,6 +1,10 @@
 package com.meuapp.listrepositoriesapp.ui.components
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Card
@@ -26,10 +30,13 @@ fun RepoItem(repo: Repo) {
         modifier = Modifier
             .padding(10.dp)
             .fillMaxWidth()
+
     ) {
         Column {
             ImageTec(
-                language = if (repo.language.isNullOrEmpty().not()) "${repo.language}" else stringResource(
+                language = if (repo.language.isNullOrEmpty()
+                        .not()
+                ) "${repo.language}" else stringResource(
                     R.string.repo_no_language
                 )
             )
@@ -66,21 +73,20 @@ fun ImageTec(language: String) {
 
 @Composable
 fun Title(text: String, value: String) {
-    Column {
-        Text(
-            fontWeight = FontWeight.Bold,
-            fontSize = 22.sp,
-            text = text
+    Text(
+        fontWeight = FontWeight.Bold,
+        fontSize = 16.sp,
+        text = text
 
-        )
-        Spacer(modifier = Modifier.height(6.dp))
+    )
+    Spacer(modifier = Modifier.height(6.dp))
 
-        Text(
-            fontSize = 20.sp,
-            text = value,
-            fontWeight = FontWeight.Light
-        )
-    }
+    Text(
+        fontWeight = FontWeight.Light,
+        fontSize = 14.sp,
+        text = value,
+    )
+
 }
 
 @Composable
@@ -88,16 +94,21 @@ fun Content(repo: Repo) {
     Column(modifier = Modifier.padding(14.dp)) {
 
         Title(text = stringResource(R.string.repo_name), value = repo.name)
-        Spacer(modifier = Modifier.height(10.dp))
+        Spacer(modifier = Modifier.height(8.dp))
         Title(
             text = stringResource(R.string.repo_description),
-            value = if (repo.description.isNullOrEmpty().not()) "${repo.description}" else stringResource(
+            value = if (repo.description.isNullOrEmpty()
+                    .not()
+            ) "${repo.description}" else stringResource(
                 R.string.repo_no_description
-            )
+            ),
         )
+        Spacer(modifier = Modifier.height(8.dp))
         Title(
             text = stringResource(R.string.repo_language),
-            value = if (repo.language.isNullOrEmpty().not()) "${repo.language}" else stringResource(R.string.repo_no_language)
+            value = if (repo.language.isNullOrEmpty().not()) "${repo.language}" else stringResource(
+                R.string.repo_no_language
+            )
         )
 
     }
