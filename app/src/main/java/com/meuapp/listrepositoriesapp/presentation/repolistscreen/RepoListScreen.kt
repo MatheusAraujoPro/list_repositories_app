@@ -20,6 +20,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.meuapp.listrepositoriesapp.domain.model.Repo
 import com.meuapp.listrepositoriesapp.ui.components.RepoItem
+import com.meuapp.listrepositoriesapp.ui.components.TopAppBarDefault
+import com.meuapp.listrepositoriesapp.ui.components.TopAppBarSearch
 import org.koin.androidx.compose.getViewModel
 
 

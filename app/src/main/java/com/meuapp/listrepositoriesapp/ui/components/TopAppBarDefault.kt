@@ -1,4 +1,4 @@
-package com.meuapp.listrepositoriesapp.presentation.repolistscreen
+package com.meuapp.listrepositoriesapp.ui.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.height
